@@ -140,6 +140,23 @@
     border-radius: 16px;
     padding: 32px;
   }
+  /* Auf yellow-card: alle Labels, Module-Nums, body und schwarze Borders kontrast-sicher */
+  .yellow-card .label,
+  .yellow-card .module-num { color: rgba(255,255,255,0.85); }
+  .yellow-card .body,
+  .yellow-card p { color: var(--white); }
+  .yellow-card a { color: var(--white); }
+  /* Inline schwarze Text-Farbe innerhalb yellow-card → weiss */
+  .yellow-card [style*="color: var(--black)"],
+  .yellow-card [style*="color:var(--black)"] { color: var(--white) !important; }
+  /* Inline schwarze Borders innerhalb yellow-card → halb-transparentes weiss */
+  .yellow-card [style*="border-top: 1px solid var(--black)"],
+  .yellow-card [style*="border-bottom: 1px solid var(--black)"],
+  .yellow-card [style*="border: 1px solid var(--black)"] {
+    border-color: rgba(255,255,255,0.3) !important;
+  }
+  /* yellow-pill: Label-Klasse darin auch lesbar */
+  .yellow-pill .label { color: rgba(255,255,255,0.9); }
   .dark-card {
     background: var(--black);
     color: var(--white);
