@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Küsten-Shuttle · Investment Proposal 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #fafaf7;
+    --yellow: #d4ff00;
+    --gray-200: #e5e5e0;
+    --gray-500: #8a8a85;
+    --gray-700: #3a3a38;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+    font-feature-settings: "ss01", "ss02", "ss03";
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Navigation */
+  .nav {
+    position: fixed;
+    top: 24px; right: 24px;
+    z-index: 100;
+    display: flex;
+    gap: 8px;
+    background: var(--black);
+    padding: 8px 12px;
+    border-radius: 100px;
+  }
+  .nav button {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav button:hover { background: var(--gray-700); }
+  .nav button.active { background: var(--yellow); color: var(--black); }
+
+  /* Slide-Container */
+  .deck {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+  .slide {
+    background: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 24px;
+    padding: 56px 64px;
+    margin-bottom: 24px;
+    min-height: 720px;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide.dark {
+    background: var(--black);
+    color: var(--white);
+  }
+  .slide-meta {
+    position: absolute;
+    top: 24px; left: 64px; right: 64px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gray-500);
+    padding-bottom: 12px;
+    border-bottom: 1px solid currentColor;
+  }
+  .slide.dark .slide-meta { color: var(--gray-200); border-bottom-color: var(--gray-700); }
+  .slide-number {
+    position: absolute;
+    bottom: 32px; right: 64px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gray-500);
+  }
+  .slide-title-tiny {
+    position: absolute;
+    bottom: 32px; left: 64px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gray-500);
+  }
+
+  /* Typography */
+  .display { font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; }
+  .h1 { font-size: clamp(72px, 9vw, 140px); }
+  .h2 { font-size: clamp(48px, 6vw, 88px); }
+  .h3 { font-size: clamp(32px, 4vw, 56px); }
+  .h4 { font-size: clamp(20px, 2.4vw, 32px); font-weight: 600; }
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gray-500);
+  }
+  .label.dark { color: var(--gray-200); }
+  .body { font-size: 16px; line-height: 1.55; color: var(--gray-700); }
+  .body.dark { color: var(--gray-200); }
+  .big-num { font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+  
+  /* Yellow accent */
+  .yellow-pill {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+  .yellow-card {
+    background: var(--yellow);
+    color: var(--black);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .dark-card {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .light-card {
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .asterisk {
+    color: var(--yellow);
+    font-size: 28px;
+    line-height: 0;
+  }
+  .arrow {
+    display: inline-block;
+    transform: rotate(-45deg);
+  }
+
+  /* Grids */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  th, td { padding: 12px 8px; text-align: left; border-bottom: 1px solid var(--gray-200); }
+  th { font-weight: 600; text-transform: uppercase; font-size: 10px; letter-spacing: 0.1em; color: var(--gray-500); }
+  td.num { text-align: right; }
+  .slide.dark th { color: var(--gray-200); }
+  .slide.dark td, .slide.dark th { border-bottom-color: var(--gray-700); }
+
+  /* Hero structure */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    height: calc(100% - 48px);
+    align-items: end;
+    padding-top: 48px;
+  }
+  .hero-left { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+  .hero-stats { display: flex; gap: 48px; margin-top: 24px; }
+  .stat-block .num { font-size: 56px; font-weight: 800; letter-spacing: -0.04em; }
+
+  /* Module-Card (for proposal slide) */
+  .module-card {
+    border: 1px solid var(--black);
+    border-radius: 16px;
+    padding: 32px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 240px;
+  }
+  .module-card.featured {
+    background: var(--yellow);
+    border-color: var(--yellow);
+  }
+  .module-card.dark {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+  }
+  .module-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gray-500);
+  }
+  .module-card.dark .module-num { color: var(--gray-200); }
+
+  /* Forecast bar chart */
+  .bar-chart { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+  .bar-row { display: grid; grid-template-columns: 120px 1fr 80px; gap: 16px; align-items: center; }
+  .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gray-700); }
+  .bar-track { background: var(--gray-200); border-radius: 4px; height: 32px; overflow: hidden; position: relative; }
+  .slide.dark .bar-track { background: var(--gray-700); }
+  .bar-fill { height: 100%; background: var(--black); transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+  .bar-fill.yellow { background: var(--yellow); }
+  .bar-fill.gray { background: var(--gray-500); }
+  .slide.dark .bar-fill { background: var(--white); }
+  .bar-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* Quarter strip */
+  .quarter-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--black);
+    border: 1px solid var(--black);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .quarter-cell {
+    background: var(--white);
+    padding: 24px;
+  }
+  .quarter-cell.highlight { background: var(--yellow); }
+
+  /* Top KPI grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--black);
+    border: 1px solid var(--black);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .kpi-cell {
+    background: var(--white);
+    padding: 32px 24px;
+  }
+  .kpi-cell.yellow { background: var(--yellow); color: var(--black); }
+  .kpi-cell.dark { background: var(--black); color: var(--white); }
+  .kpi-num { font-size: 48px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+  .kpi-cell .kpi-num { color: var(--black); }
+  .kpi-sub { font-size: 12px; color: var(--gray-700); margin-top: 8px; font-family: 'JetBrains Mono', monospace; line-height: 1.4; }
+  .kpi-cell.yellow .kpi-sub { color: var(--black); font-weight: 600; }
+  .kpi-cell.dark .kpi-num { color: var(--white); }
+  .kpi-cell.dark .kpi-sub { color: var(--gray-200); }
+
+  /* Cap-Table stack */
+  .stack-bar { display: flex; height: 56px; border-radius: 8px; overflow: hidden; margin: 12px 0; border: 1px solid var(--black); }
+  .stack-seg { display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--white); }
+  .stack-seg.light { color: var(--black); }
+
+  /* Animation on view */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .anim { animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+
+  /* Print */
+  @media print {
+    .nav { display: none; }
+    .slide { page-break-after: always; min-height: 100vh; margin: 0; border-radius: 0; }
+    .deck { padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========================== PASSWORD GATE ========================== -->
+<div id="gate" style="position:fixed; inset:0; background:#0a0a0a; z-index:9999; display:flex; align-items:center; justify-content:center; padding:24px;">
+  <div style="max-width:480px; width:100%; text-align:left;">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8a85; text-transform:uppercase; letter-spacing:0.2em; margin-bottom:24px;">Küsten-Shuttle · Investment Proposal · v1.0</div>
+    <h1 style="font-family:'Bricolage Grotesque', sans-serif; font-weight:800; font-size:64px; line-height:0.95; letter-spacing:-0.04em; color:#fafaf7; margin-bottom:16px;">
+      Konfidenziell.<br><span style="color:#d4ff00;">Bitte einloggen.</span>
+    </h1>
+    <p style="font-family:'Bricolage Grotesque', sans-serif; color:#e5e5e0; font-size:16px; line-height:1.55; margin-bottom:32px;">
+      Dieses Dokument ist ausschließlich für Hannes Bodderas und Victoria Benesch bestimmt.
+      Wenn Sie versehentlich hier gelandet sind, schließen Sie bitte das Fenster.
+    </p>
+    <form id="gate-form" onsubmit="return checkPassword(event)">
+      <input id="pwd" type="password" placeholder="Passwort"
+        style="width:100%; padding:16px 20px; font-family:'JetBrains Mono', monospace; font-size:14px;
+        background:transparent; color:#fafaf7; border:1px solid #3a3a38; border-radius:12px; outline:none;"
+        autofocus />
+      <button type="submit" style="margin-top:12px; width:100%; padding:16px 20px;
+        font-family:'JetBrains Mono', monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.15em; font-weight:600;
+        background:#d4ff00; color:#0a0a0a; border:none; border-radius:12px; cursor:pointer;">
+        Pitch ansehen →
+      </button>
+      <div id="gate-error" style="margin-top:16px; font-family:'JetBrains Mono', monospace; font-size:12px; color:#d4ff00; display:none;">
+        Passwort nicht korrekt. Bitte erneut versuchen.
+      </div>
+    </form>
+    <div style="margin-top:48px; padding-top:24px; border-top:1px solid #3a3a38; font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8a85;">
+      Bei Fragen: alex@kuestenshuttle.de
+    </div>
+  </div>
+</div>
+
+<script>
+  // SHA256 client-side check
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  const PWD_HASH = '77af82e928ff14872bc6e085ca1f4a282f2a11738088c057d56214a7f928fbd4';
+
+  async function checkPassword(e) {
+    e.preventDefault();
+    const pwd = document.getElementById('pwd').value;
+    const hash = await sha256(pwd);
+    if (hash === PWD_HASH) {
+      sessionStorage.setItem('ks_unlocked', '1');
+      document.getElementById('gate').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    } else {
+      document.getElementById('gate-error').style.display = 'block';
+      document.getElementById('pwd').value = '';
+    }
+    return false;
+  }
+
+  // Auto-unlock if already entered in session
+  if (sessionStorage.getItem('ks_unlocked') === '1') {
+    document.getElementById('gate').style.display = 'none';
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+</script>
+
+<nav class="nav">
+  <button onclick="document.getElementById('s1').scrollIntoView({behavior:'smooth'})">01</button>
+  <button onclick="document.getElementById('s_confidential').scrollIntoView({behavior:'smooth'})">02</button>
+  <button onclick="document.getElementById('s_smartmoney').scrollIntoView({behavior:'smooth'})">03</button>
+  <button onclick="document.getElementById('s2').scrollIntoView({behavior:'smooth'})">04</button>
+  <button onclick="document.getElementById('s3').scrollIntoView({behavior:'smooth'})">05</button>
+  <button onclick="document.getElementById('s4').scrollIntoView({behavior:'smooth'})">06</button>
+  <button onclick="document.getElementById('s5').scrollIntoView({behavior:'smooth'})">07</button>
+  <button onclick="document.getElementById('s6').scrollIntoView({behavior:'smooth'})">08</button>
+  <button onclick="document.getElementById('s_northstar').scrollIntoView({behavior:'smooth'})">09</button>
+  <button onclick="document.getElementById('s7').scrollIntoView({behavior:'smooth'})">10</button>
+  <button onclick="document.getElementById('s8').scrollIntoView({behavior:'smooth'})">11</button>
+  <button onclick="document.getElementById('s9team').scrollIntoView({behavior:'smooth'})">12</button>
+  <button onclick="document.getElementById('s9').scrollIntoView({behavior:'smooth'})">13</button>
+  <button onclick="document.getElementById('s10').scrollIntoView({behavior:'smooth'})">14</button>
+  <button onclick="document.getElementById('s11').scrollIntoView({behavior:'smooth'})">15</button>
+  <button onclick="document.getElementById('s12').scrollIntoView({behavior:'smooth'})">16</button>
+  <button onclick="document.getElementById('s13').scrollIntoView({behavior:'smooth'})">17</button>
+</nav>
+
+<div class="deck">
+
+  

@@ -1,0 +1,21 @@
+
+
+</div>
+
+<script>
+  // Update active nav button on scroll
+  const slides = document.querySelectorAll('.slide');
+  const buttons = document.querySelectorAll('.nav button');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(slides).indexOf(entry.target);
+        buttons.forEach(b => b.classList.remove('active'));
+        if (buttons[idx]) buttons[idx].classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
