@@ -309,10 +309,86 @@
     .deck { padding: 24px 12px 60px; }
     .slide {
       padding: 24px 16px;
-      min-height: auto;
+      min-height: auto !important;
       margin-bottom: 16px;
       border-radius: 8px;
     }
+
+    /* Cover (Slide 1) - Inline-Styles überschreiben */
+    #s1 {
+      min-height: 480px !important;
+      height: auto !important;
+    }
+    #s1 > div[style*="z-index: 2"] {
+      padding: 24px 16px !important;
+      height: auto !important;
+      min-height: 480px !important;
+    }
+    #s1 div[style*="font-size: 96px"] {
+      font-size: 44px !important;
+      white-space: normal !important;
+      letter-spacing: -0.03em !important;
+      line-height: 1 !important;
+    }
+    #s1 .slide-meta {
+      font-size: 9px !important;
+      gap: 8px;
+    }
+    #s1 div[style*="01 / 17"] {
+      font-size: 9px !important;
+    }
+
+    /* Slide 6 (Umsatz-Vergleich) große Zahlen */
+    #s6 div[style*="font-size: 9"],
+    #s6 div[style*="font-size: 12"] {
+      font-size: 48px !important;
+    }
+
+    /* Slide 17 große Schrift */
+    #s17 div[style*="font-size: 9"],
+    #s17 div[style*="font-size: 12"] {
+      font-size: 44px !important;
+    }
+
+    /* Generell: alle Inline white-space: nowrap aufheben */
+    [style*="white-space: nowrap"] {
+      white-space: normal !important;
+    }
+    /* Ausnahme: Tabellen-Zellen sollen nowrap behalten */
+    table td[style*="nowrap"], table th[style*="nowrap"] {
+      white-space: nowrap !important;
+    }
+
+    /* Generell: Inline-Styles mit grossen Paddings reduzieren */
+    [style*="padding: 56px"],
+    [style*="padding: 64px"],
+    [style*="padding: 80px"],
+    [style*="padding: 56px 64px"] {
+      padding: 24px 16px !important;
+    }
+
+    /* Generell: Inline-Styles mit sehr grosser font-size (80-160px) auf 44px */
+    [style*="font-size: 80px"],
+    [style*="font-size: 88px"],
+    [style*="font-size: 96px"],
+    [style*="font-size: 104px"],
+    [style*="font-size: 112px"],
+    [style*="font-size: 120px"],
+    [style*="font-size: 128px"],
+    [style*="font-size: 140px"],
+    [style*="font-size: 160px"] {
+      font-size: 44px !important;
+      letter-spacing: -0.03em !important;
+      line-height: 1 !important;
+    }
+    /* Mittelgrosse Inline font-size (48-72px) → 32px */
+    [style*="font-size: 48px"],
+    [style*="font-size: 56px"],
+    [style*="font-size: 64px"],
+    [style*="font-size: 72px"] {
+      font-size: 32px !important;
+    }
+
     .nav {
       position: sticky;
       top: 0;
@@ -369,19 +445,15 @@
     .kpi-num { font-size: 28px; }
     .kpi-sub { font-size: 11px; }
 
-    /* Tabellen mobile-friendly */
-    table { font-size: 11px; }
-    th, td { padding: 8px 4px; }
-    th { font-size: 9px; }
-
-    /* Tabellen-Cells nicht über Container hinaus */
-    table .num { font-size: 11px; }
-
-    /* Lange Tabellen scrollbar */
-    .table-wrap {
+    /* Tabellen mobile-friendly mit horizontal-scroll */
+    section.slide {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
+    table { font-size: 11px; min-width: auto; }
+    th, td { padding: 8px 4px; }
+    th { font-size: 9px; }
+    table .num { font-size: 11px; }
 
     /* Body-Text */
     .body { font-size: 14px; line-height: 1.5; }
