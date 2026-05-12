@@ -286,6 +286,134 @@
   }
   .anim { animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
 
+  /* ============================================
+     MOBILE & TABLET RESPONSIVE
+     ============================================ */
+
+  /* Tablet (≤960px) */
+  @media (max-width: 960px) {
+    .deck { padding: 40px 16px 80px; }
+    .slide { padding: 32px 24px; border-radius: 12px; }
+    .nav { padding: 8px 16px; gap: 8px; flex-wrap: wrap; }
+    .nav-link { font-size: 10px; padding: 4px 8px; }
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-block .num { font-size: 40px; }
+    .kpi-num { font-size: 36px; }
+    .big-num { font-size: 28px !important; }
+  }
+
+  /* Mobile (≤640px) */
+  @media (max-width: 640px) {
+    body { font-size: 14px; }
+    .deck { padding: 24px 12px 60px; }
+    .slide {
+      padding: 24px 16px;
+      min-height: auto;
+      margin-bottom: 16px;
+      border-radius: 8px;
+    }
+    .nav {
+      position: sticky;
+      top: 0;
+      background: rgba(250, 249, 245, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 8px 12px;
+      gap: 6px;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav-link {
+      font-size: 9px;
+      padding: 4px 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Headlines mobil kleiner */
+    .h1 { font-size: clamp(40px, 12vw, 64px) !important; line-height: 0.95; }
+    .h2 { font-size: clamp(28px, 8vw, 44px) !important; line-height: 1.05; }
+    .h3 { font-size: clamp(22px, 6vw, 32px) !important; }
+    .h4 { font-size: clamp(16px, 4vw, 22px) !important; }
+    .display { letter-spacing: -0.03em; }
+
+    /* Slide-Meta horizontal halten */
+    .slide-meta { font-size: 9px !important; flex-wrap: wrap; gap: 8px; }
+    .slide-title-tiny { font-size: 9px !important; }
+    .label { font-size: 9px !important; }
+    .yellow-pill { font-size: 10px; padding: 4px 10px; }
+
+    /* Grids alle auf 1 Spalte */
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    /* Karten mobil-tauglich */
+    .dark-card,
+    .light-card,
+    .yellow-card {
+      padding: 20px 16px;
+      border-radius: 8px;
+    }
+
+    /* Big-Numbers schrumpfen */
+    .big-num { font-size: 26px !important; }
+    .stat-block .num { font-size: 32px; }
+    .kpi-num { font-size: 28px; }
+    .kpi-sub { font-size: 11px; }
+
+    /* Tabellen mobile-friendly */
+    table { font-size: 11px; }
+    th, td { padding: 8px 4px; }
+    th { font-size: 9px; }
+
+    /* Tabellen-Cells nicht über Container hinaus */
+    table .num { font-size: 11px; }
+
+    /* Lange Tabellen scrollbar */
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Body-Text */
+    .body { font-size: 14px; line-height: 1.5; }
+    p { font-size: 14px; }
+
+    /* Buttons / Pills */
+    .pill { padding: 4px 10px; font-size: 10px; }
+
+    /* Bar-Chart Labels */
+    .bar-label { font-size: 10px; }
+
+    /* Stack-Segments (z.B. EBITDA-Balken) */
+    .stack-seg { font-size: 9px; }
+
+    /* Login-Gate auf mobil */
+    #gate > div { padding: 0 16px; }
+
+    /* Listen ohne Padding-Surplus */
+    ul, ol { padding-left: 20px; }
+    li { font-size: 13px; line-height: 1.5; }
+  }
+
+  /* Sehr kleine Geräte (≤375px iPhone SE etc.) */
+  @media (max-width: 375px) {
+    .slide { padding: 20px 12px; }
+    .h1 { font-size: 36px !important; }
+    .h2 { font-size: 26px !important; }
+    .big-num { font-size: 22px !important; }
+    table { font-size: 10px; }
+    th, td { padding: 6px 3px; }
+  }
+
   /* Print */
   @media print {
     .nav { display: none; }
