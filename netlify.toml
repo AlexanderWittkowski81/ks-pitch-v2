@@ -1,6 +1,5 @@
+# Netlify Config - Static Site
+# index.html ist vor-gebaut im Repo. Für Updates: lokal python3 build.py laufen lassen, dann committen.
 [build]
-  command = "python3 build.py"
   publish = "."
-
-[build.environment]
-  PYTHON_VERSION = "3.9"
+  # Build-Command absichtlich leer - index.html wird direkt serviert
